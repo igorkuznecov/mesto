@@ -1,0 +1,5 @@
+.element__picture {
+  object-fit: cover;
+  object-position: bottom right;
+  width: 100%;
+}
