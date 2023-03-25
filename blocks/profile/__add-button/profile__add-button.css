@@ -4,6 +4,7 @@
   height: 50px;
   background: url(../../../images/plus.svg) center / 22px no-repeat;
   margin-left: auto;
+  cursor: pointer;
 }
 
 .profile__add-button:hover {

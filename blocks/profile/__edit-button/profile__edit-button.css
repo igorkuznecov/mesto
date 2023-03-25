@@ -3,6 +3,7 @@
   width: 24px;
   height: 24px;
   background: url(../../../images/pen.svg) center / 10px no-repeat;
+  cursor: pointer;
 }
 
 .profile__edit-button:hover {
