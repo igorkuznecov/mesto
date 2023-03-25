@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 22px;
+  line-height: 1.22;
   color: #fff;
   background-color: black;
   border: none;
@@ -22,4 +22,3 @@
     line-height: 17px;
   }
 }
-
