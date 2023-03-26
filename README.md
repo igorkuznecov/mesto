@@ -10,4 +10,4 @@
 * Технологии адаптивной и отзывчивой верстки
 * Методология БЭМ
 
-[Посмотреть проект на gh pages](https://igorkuznecov.github.io/russian-travel/)
+[Посмотреть проект на gh pages](https://igorkuznecov.github.io/mesto/)
