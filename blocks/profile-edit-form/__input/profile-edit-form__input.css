@@ -1,11 +1,15 @@
-.popup__form-profile-description {
+.profile-edit-form__input {
   font-family: 'Inter', 'Helvetica', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.22;
   border: none;
-  border-bottom: 1px solid #00000020;
-  margin: 0 0 48px 0;
+  border-bottom: 1px solid #00000033;
+  margin: 0 0 30px 0;
   padding: 0 0 13px 0;
+}
+
+.profile-edit-form__input:not(:first-child) {
+  margin: 0 0 48px 0;
 }
