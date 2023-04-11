@@ -52,6 +52,7 @@ function addCard(name, link) {
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   cardElement.querySelector('.element__title').textContent = name;
   cardElement.querySelector('.element__picture').src = link;
+  cardElement.querySelector('.element__picture').alt = name;
   cardElement.querySelector('.element__picture').addEventListener('click', function () {
     popupLightbox.querySelector('.popup__lightbox-image').src = link;
     popupLightbox.querySelector('.popup__image-description').textContent = name;
@@ -111,6 +112,7 @@ initialCards.forEach(function (element) {
 
   cardElement.querySelector('.element__title').textContent = element.name;
   cardElement.querySelector('.element__picture').src = element.link;
+  cardElement.querySelector('.element__picture').alt = element.name;
 
   cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('element__like_active');
