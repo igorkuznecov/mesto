@@ -3,4 +3,5 @@
   object-position: bottom right;
   width: 100%;
   aspect-ratio: 1/1;
+  cursor: pointer;
 }
