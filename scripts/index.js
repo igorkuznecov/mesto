@@ -8,16 +8,16 @@ const popupEditCloseButton = popupEdit.querySelector('.popup__close-button')
 const popupEditFormElement = popupEditCOntainer.querySelector('.edit-form');
 let profileName = page.querySelector('.profile__name');
 let profileJob = page.querySelector('.profile__description');
-let nameInput = popupEditFormElement.querySelector('.profile-edit-form__input_name');
-let jobInput = popupEditFormElement.querySelector('.profile-edit-form__input_job');
+let nameInput = popupEditFormElement.querySelector('.edit-form__input_profile-name');
+let jobInput = popupEditFormElement.querySelector('.edit-form__input_profile-job');
 
 const addButton = page.querySelector('.profile__add-button');
 const popupAdd = page.querySelector('.popup-add');
 const popupAddCOntainer = popupAdd.querySelector('.popup__container');
 const popupAddCloseButton = popupAdd.querySelector('.popup__close-button')
 const popupAddFormElement = popupAddCOntainer.querySelector('.edit-form');
-const cardNameInput = popupAddFormElement.querySelector('.add-form__input_name');
-const cardLinkInput = popupAddFormElement.querySelector('.add-form__input_link');
+const cardNameInput = popupAddFormElement.querySelector('.edit-form__input_card-name');
+const cardLinkInput = popupAddFormElement.querySelector('.edit-form__input_card-link');
 
 const popupLightbox = page.querySelector('.popup-lightbox');
 
