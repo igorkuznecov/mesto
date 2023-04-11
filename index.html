@@ -7,28 +7,58 @@
     <title>Место</title>
   </head>
   <body class="page">
-    <section class="popup">
+    <section class="popup popup-edit">
       <div class="popup__container">
         <button
           type="button"
           aria-label="Закрыть"
           class="popup__close-button"
         ></button>
-        <form name="profile-edit-form" class="profile-edit-form">
-          <h2 class="profile-edit-form__title">Редактировать профиль</h2>
+        <form name="profile-edit-form" class="edit-form profile-edit-form">
+          <h2 class="edit-form__title">Редактировать профиль</h2>
           <input
             type="text"
-            class="profile-edit-form__input profile-edit-form__input_name"
+            class="edit-form__input profile-edit-form__input_name"
             name="profile-edit-form-name"
           />
           <input
             type="text"
-            class="profile-edit-form__input profile-edit-form__input_job"
+            class="edit-form__input profile-edit-form__input_job"
             name="profile-edit-form-job"
           />
           <input
             type="submit"
-            class="profile-edit-form__save-button"
+            class="edit-form__save-button"
+            value="Сохранить"
+            name="profile-edit-form-save-button"
+          />
+        </form>
+      </div>
+    </section>
+    <section class="popup popup-add">
+      <div class="popup__container">
+        <button
+          type="button"
+          aria-label="Закрыть"
+          class="popup__close-button"
+        ></button>
+        <form name="add-form" class="edit-form">
+          <h2 class="edit-form__title">Новое место</h2>
+          <input
+            type="text"
+            placeholder="Название"
+            class="edit-form__input add-form__input_name"
+            name="profile-edit-form-name"
+          />
+          <input
+            type="text"
+            placeholder="Ссылка на картинку"
+            class="edit-form__input add-form__input_link"
+            name="profile-edit-form-job"
+          />
+          <input
+            type="submit"
+            class="edit-form__save-button"
             value="Сохранить"
             name="profile-edit-form-save-button"
           />
@@ -56,90 +86,19 @@
           type="button"
         ></button>
       </section>
-      <section class="elements">
-        <article class="element">
-          <img
-            src="./images/kirill-pershin-1088404-unsplash.jpg"
-            class="element__picture"
-            alt="Древний храм в горах"
-          />
-          <h2 class="element__title">Карачаевск</h2>
-          <button
-            class="element__like"
-            type="button"
-            aria-label="Лайк"
-          ></button>
-        </article>
-        <article class="element">
-          <img
-            src="./images/kirill-pershin-1404681-unsplash.png"
-            class="element__picture"
-            alt="Гора Эльбрус на рассвете"
-          />
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button
-            class="element__like"
-            type="button"
-            aria-label="Лайк"
-          ></button>
-        </article>
-        <article class="element">
-          <img
-            src="./images/kirill-pershin-1556355-unsplash.jpg"
-            class="element__picture"
-            alt="Деревья на горном склоне"
-          />
-          <h2 class="element__title">Домбай</h2>
-          <button
-            class="element__like"
-            type="button"
-            aria-label="Лайк"
-          ></button>
-        </article>
-        <article class="element">
-          <img
-            src="./images/kirill-pershin-1404681-unsplash.png"
-            class="element__picture"
-            alt="Гора Эльбрус на рассвете"
-          />
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button
-            class="element__like"
-            type="button"
-            aria-label="Лайк"
-          ></button>
-        </article>
-        <article class="element">
-          <img
-            src="./images/kirill-pershin-1556355-unsplash.jpg"
-            class="element__picture"
-            alt="Деревья на горном склоне"
-          />
-          <h2 class="element__title">Домбай</h2>
-          <button
-            class="element__like"
-            type="button"
-            aria-label="Лайк"
-          ></button>
-        </article>
-        <article class="element">
-          <img
-            src="./images/kirill-pershin-1088404-unsplash.jpg"
-            class="element__picture"
-            alt="Древний храм в горах"
-          />
-          <h2 class="element__title">Карачаево-Черкесия</h2>
-          <button
-            class="element__like"
-            type="button"
-            aria-label="Лайк"
-          ></button>
-        </article>
-      </section>
+      <section class="elements"></section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
+    <template id="card-template">
+      <article class="element">
+        <img src="./images/trash.svg" class="element__trash" alt="" />
+        <img src="" class="element__picture" alt="" />
+        <h2 class="element__title"></h2>
+        <button class="element__like" type="button" aria-label="Лайк"></button>
+      </article>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

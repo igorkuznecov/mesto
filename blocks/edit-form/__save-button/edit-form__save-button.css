@@ -1,4 +1,4 @@
-.profile-edit-form__save-button {
+.edit-form__save-button {
   font-family: 'Inter', 'Helvetica', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -12,12 +12,12 @@
   cursor: pointer;
 }
 
-.profile-edit-form__save-button:hover {
+.edit-form__save-button:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (max-width: 620px) {
-  .profile-edit-form__save-button {
+  .edit-form__save-button {
     font-size: 14px;
     line-height: 17px;
   }
