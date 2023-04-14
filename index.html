@@ -7,75 +7,6 @@
     <title>Место</title>
   </head>
   <body class="page">
-    <section class="popup popup-edit">
-      <div class="popup__container">
-        <button
-          type="button"
-          aria-label="Закрыть"
-          class="popup__close-button"
-        ></button>
-        <form name="profile-edit-form" class="edit-form profile-edit-form">
-          <h2 class="edit-form__title">Редактировать профиль</h2>
-          <input
-            type="text"
-            class="edit-form__input edit-form__input_profile-name"
-            name="profile-edit-form-name"
-          />
-          <input
-            type="text"
-            class="edit-form__input edit-form__input_profile-job"
-            name="profile-edit-form-job"
-          />
-          <input
-            type="submit"
-            class="edit-form__save-button"
-            value="Сохранить"
-            name="profile-edit-form-save-button"
-          />
-        </form>
-      </div>
-    </section>
-    <section class="popup popup-add">
-      <div class="popup__container">
-        <button
-          type="button"
-          aria-label="Закрыть"
-          class="popup__close-button"
-        ></button>
-        <form name="add-form" class="edit-form">
-          <h2 class="edit-form__title">Новое место</h2>
-          <input
-            type="text"
-            placeholder="Название"
-            class="edit-form__input edit-form__input_card-name"
-            name="profile-edit-form-name"
-          />
-          <input
-            type="text"
-            placeholder="Ссылка на картинку"
-            class="edit-form__input edit-form__input_card-link"
-            name="profile-edit-form-job"
-          />
-          <input
-            type="submit"
-            class="edit-form__save-button"
-            value="Сохранить"
-            name="profile-edit-form-save-button"
-          />
-        </form>
-      </div>
-    </section>
-    <section class="popup popup-lightbox">
-      <div class="popup__image-container">
-        <button
-          type="button"
-          aria-label="Закрыть"
-          class="popup__close-button"
-        ></button>
-        <img class="popup__lightbox-image" src="./images/cat.jpg" alt="Кот" />
-        <p class="popup__image-description"></p>
-      </div>
-    </section>
     <header class="header">
       <img class="header__logo" src="./images/logo.svg" alt="лого" />
     </header>
@@ -114,6 +45,84 @@
         <button class="element__like" type="button" aria-label="Лайк"></button>
       </article>
     </template>
+    <section class="popup popup-edit">
+      <div class="popup__container">
+        <button
+          type="button"
+          aria-label="Закрыть"
+          class="popup__close-button"
+        ></button>
+        <h2 class="edit-form__title">Редактировать профиль</h2>
+        <form name="profile-edit-form" class="edit-form profile-edit-form">
+          <input
+            required
+            placeholder="Имя"
+            type="text"
+            class="edit-form__input edit-form__input_profile-name"
+            name="profile-edit-form-name"
+          />
+          <input
+            required
+            placeholder="О себе"
+            type="text"
+            class="edit-form__input edit-form__input_profile-job"
+            name="profile-edit-form-job"
+          />
+          <button
+            type="submit"
+            class="edit-form__save-button"
+            name="profile-edit-form-save-button"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
+    <section class="popup popup-add">
+      <div class="popup__container">
+        <button
+          type="button"
+          aria-label="Закрыть"
+          class="popup__close-button"
+        ></button>
+        <h2 class="edit-form__title">Новое место</h2>
+        <form name="add-form" class="edit-form">
+          <input
+            required
+            type="text"
+            placeholder="Название"
+            class="edit-form__input edit-form__input_card-name"
+            name="profile-edit-form-name"
+          />
+          <input
+            required
+            type="url"
+            placeholder="Ссылка на картинку"
+            class="edit-form__input edit-form__input_card-link"
+            name="profile-edit-form-job"
+          />
+          <button
+            type="submit"
+            class="edit-form__save-button"
+            name="profile-edit-form-save-button"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
+    <section class="popup popup-lightbox">
+      <div class="popup__image-container">
+        <button
+          type="button"
+          aria-label="Закрыть"
+          class="popup__close-button"
+        ></button>
+        <img class="popup__lightbox-image" src="./images/cat.jpg" alt="Кот" />
+        <p class="popup__image-description"></p>
+      </div>
+    </section>
+    <script src="./scripts/initialCards.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
