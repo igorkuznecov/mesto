@@ -1,4 +1,4 @@
-.edit-form__title {
+.popup__title {
   font-family: 'Inter', 'Helvetica', sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 620px) {
-  .edit-form__title {
+  .popup__title {
     font-size: 18px;
     line-height: 22px;
   }
