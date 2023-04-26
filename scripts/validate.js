@@ -31,12 +31,20 @@ function setEventListeners(config, formElement) {
   );
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
   toggleButtonState(config, inputList, buttonElement);
+  formElement.addEventListener('reset', () => {
+    disableButton(config, buttonElement)
+  });
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(config, formElement, inputElement);
       toggleButtonState(config, inputList, buttonElement);
     });
   });
+}
+
+function disableButton(config, buttonElement) {
+  buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.setAttribute('disabled', '');
 }
 
 function enableValidation(config) {
@@ -57,9 +65,10 @@ function hasInvalidInput(inputList) {
 
 function toggleButtonState(config, inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(config.inactiveButtonClass);
+    disableButton(config, buttonElement);
   } else {
     buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.removeAttribute('disabled');
   }
 }
 

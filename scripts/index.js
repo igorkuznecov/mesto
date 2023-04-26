@@ -3,7 +3,6 @@ const page = document.querySelector('.page');
 const profileEditButton = page.querySelector('.profile__edit-button');
 const popupProfile = page.querySelector('.popup-edit');
 const popupProfileCOntainer = popupProfile.querySelector('.popup__container');
-const popupProfileCloseButton = popupProfile.querySelector('.popup__close-button');
 const popupProfileFormElement = popupProfileCOntainer.querySelector('.edit-form');
 const profileName = page.querySelector('.profile__name');
 const profileAbout = page.querySelector('.profile__description');
@@ -13,7 +12,7 @@ const jobInput = popupProfileFormElement.querySelector('.edit-form__input_profil
 const addCardButton = page.querySelector('.profile__add-button');
 const popupCard = page.querySelector('.popup-add');
 const popupCardCOntainer = popupCard.querySelector('.popup__container');
-const popupCardCloseButton = popupCard.querySelector('.popup__close-button')
+
 const popupCardFormElement = popupCardCOntainer.querySelector('.edit-form');
 const cardNameInput = popupCardFormElement.querySelector('.edit-form__input_card-name');
 const cardLinkInput = popupCardFormElement.querySelector('.edit-form__input_card-link');
@@ -24,7 +23,8 @@ const cardTemplate = document.querySelector('#card-template').content;
 const popupLightbox = page.querySelector('.popup-lightbox');
 const popupLightboxPicture = popupLightbox.querySelector('.popup__lightbox-image');
 const popupLightboxDescription = popupLightbox.querySelector('.popup__image-description');
-const popupLightboxCloseButton = popupLightbox.querySelector('.popup__close-button');
+
+const closeButtons = document.querySelectorAll('.popup__close-button');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -74,7 +74,7 @@ function createCard(cardObj) {
   cardElement.querySelector('.element__title').textContent = cardObj.name;
   cardPicture.src = cardObj.link;
   cardPicture.alt = cardObj.name;
-  cardElement.querySelector('.element__picture').addEventListener('click', function () {
+  cardPicture.addEventListener('click', function () {
     popupLightboxPicture.src = cardObj.link;
     popupLightboxPicture.alt = cardObj.name;
     popupLightboxDescription.textContent = cardObj.name;
@@ -99,10 +99,12 @@ initialCards.forEach((card) => {
   cardsContainer.append(createCard(card));
 });
 
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
+
 popupProfileFormElement.addEventListener('submit', handlePopupEditFormSubmit);
 popupCardFormElement.addEventListener('submit', handlePopupCardFormSubmit);
 profileEditButton.addEventListener('click', () => { openPopup(popupProfile); setProfileInputsValues() });
 addCardButton.addEventListener('click', () => { openPopup(popupCard) });
-popupProfileCloseButton.addEventListener('click', () => { closePopup(popupProfile) });
-popupCardCloseButton.addEventListener('click', () => { closePopup(popupCard) });
-popupLightboxCloseButton.addEventListener('click', () => { closePopup(popupLightbox) });
