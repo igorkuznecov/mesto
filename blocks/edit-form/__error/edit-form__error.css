@@ -7,5 +7,6 @@
   color: #FF0000;
   min-height: 30px;
   opacity: 0;
+  visibility: hidden;
   box-sizing: border-box;
 }
