@@ -4,6 +4,10 @@
 @import url(../blocks/edit-form/edit-form.css);
 @import url(../blocks/edit-form/__input/edit-form__input.css);
 @import url(../blocks/edit-form/__save-button/edit-form__save-button.css);
+@import url(../blocks/edit-form/__error/edit-form__error.css);
+@import url(../blocks/edit-form/__input/_error/edit-form__input_error.css);
+@import url(../blocks/edit-form/__save-button/_disabled/edit-form__save-button_disabled.css);
+@import url(../blocks/edit-form/__error/_visible/edit-form__error_visible.css);
 
 
 @import url(../blocks/popup/popup.css);

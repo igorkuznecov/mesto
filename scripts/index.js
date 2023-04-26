@@ -1,4 +1,3 @@
-
 const page = document.querySelector('.page');
 
 const profileEditButton = page.querySelector('.profile__edit-button');
@@ -27,22 +26,40 @@ const popupLightboxPicture = popupLightbox.querySelector('.popup__lightbox-image
 const popupLightboxDescription = popupLightbox.querySelector('.popup__image-description');
 const popupLightboxCloseButton = popupLightbox.querySelector('.popup__close-button');
 
-function openPopup(popupID) {
-  popupID.classList.add('popup_opened');
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+  popup.addEventListener('click', handleClickClose);
+  document.addEventListener('keydown', handleKeyClose);
 }
 
-function closePopup(popupID) {
-  popupID.classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', handleClickClose);
+  document.removeEventListener('keydown', handleKeyClose);
 }
 
-function handlePopupEditFormSubmit (evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileAbout.textContent = jobInput.value;
-    closePopup(popupProfile);
+function handleKeyClose(evt) {
+  if (evt.key === 'Escape') {
+    const popup = page.querySelector('.popup_opened')
+    closePopup(popup);
+  }
 }
 
-function handlePopupCardFormSubmit (evt) {
+function handleClickClose(evt) {
+  if (evt.target.classList.contains('popup') && !evt.target.classList.contains('popup__container')) {
+    const popup = evt.target;
+    closePopup(popup);
+  }
+}
+
+function handlePopupEditFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileAbout.textContent = jobInput.value;
+  closePopup(popupProfile);
+}
+
+function handlePopupCardFormSubmit(evt) {
   evt.preventDefault();
   const cardObj = { name: cardNameInput.value, link: cardLinkInput.value };
   const newCard = createCard(cardObj);

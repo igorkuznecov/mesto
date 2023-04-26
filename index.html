@@ -56,18 +56,24 @@
         <form name="profile-edit-form" class="edit-form profile-edit-form">
           <input
             required
+            minlength="2"
+            maxlength="40"
             placeholder="Имя"
             type="text"
             class="edit-form__input edit-form__input_profile-name"
             name="profile-edit-form-name"
           />
+          <span class="profile-edit-form-name-error edit-form__error"></span>
           <input
             required
+            minlength="2"
+            maxlength="200"
             placeholder="О себе"
             type="text"
             class="edit-form__input edit-form__input_profile-job"
             name="profile-edit-form-job"
           />
+          <span class="profile-edit-form-job-error edit-form__error"></span>
           <button
             type="submit"
             class="edit-form__save-button"
@@ -89,11 +95,14 @@
         <form name="add-form" class="edit-form">
           <input
             required
+            minlength="2"
+            maxlength="30"
             type="text"
             placeholder="Название"
             class="edit-form__input edit-form__input_card-name"
             name="profile-edit-form-name"
           />
+          <span class="profile-edit-form-name-error edit-form__error"></span>
           <input
             required
             type="url"
@@ -101,12 +110,13 @@
             class="edit-form__input edit-form__input_card-link"
             name="profile-edit-form-job"
           />
+          <span class="profile-edit-form-job-error edit-form__error"></span>
           <button
             type="submit"
             class="edit-form__save-button"
-            name="profile-edit-form-save-button"
+            name="add-edit-form-save-button"
           >
-            Сохранить
+            Создать
           </button>
         </form>
       </div>
@@ -124,5 +134,6 @@
     </section>
     <script src="./scripts/initialCards.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
