@@ -1,4 +1,20 @@
+import { Card } from './card.js';
+import { formValidator } from './formValidator.js';
+
 const page = document.querySelector('.page');
+
+const popupLightbox = page.querySelector('.popup-lightbox');
+const popupLightboxPicture = popupLightbox.querySelector('.popup__lightbox-image');
+const popupLightboxDescription = popupLightbox.querySelector('.popup__image-description');
+
+const selectors = {
+  cardTemplate:'#card-template',
+  cardPicture:'.element__picture',
+  singleCard:'.element',
+  popupLightbox: popupLightbox,
+  popupLightboxPicture: popupLightboxPicture,
+  popupLightboxDescription: popupLightboxDescription
+};
 
 const profileEditButton = page.querySelector('.profile__edit-button');
 const popupProfile = page.querySelector('.popup-edit');
@@ -18,15 +34,27 @@ const cardNameInput = popupCardFormElement.querySelector('.edit-form__input_card
 const cardLinkInput = popupCardFormElement.querySelector('.edit-form__input_card-link');
 
 const cardsContainer = page.querySelector('.elements');
-const cardTemplate = document.querySelector('#card-template').content;
-
-const popupLightbox = page.querySelector('.popup-lightbox');
-const popupLightboxPicture = popupLightbox.querySelector('.popup__lightbox-image');
-const popupLightboxDescription = popupLightbox.querySelector('.popup__image-description');
-
 const closeButtons = document.querySelectorAll('.popup__close-button');
 
-function openPopup(popup) {
+const validationConfig = {
+  formSelector: ".edit-form",
+  inputSelector: ".edit-form__input",
+  submitButtonSelector: ".edit-form__save-button",
+  inactiveButtonClass: "edit-form__save-button_disabled",
+  inputErrorClass: "edit-form__input_error",
+  errorClass: "edit-form__error_visible",
+};
+
+const editForm =  page.querySelector('.profile-edit-form');
+const editFormForValidation = new formValidator(editForm, validationConfig)
+
+const addForm =  page.querySelector('.add-form');
+const addFormForValidation = new formValidator(addForm, validationConfig)
+
+editFormForValidation.enableValidation();
+addFormForValidation.enableValidation();
+
+export function openPopup(popup) {
   popup.classList.add('popup_opened');
   popup.addEventListener('click', handleClickClose);
   document.addEventListener('keydown', handleKeyClose);
@@ -61,33 +89,11 @@ function handlePopupEditFormSubmit(evt) {
 
 function handlePopupCardFormSubmit(evt) {
   evt.preventDefault();
-  const cardObj = { name: cardNameInput.value, link: cardLinkInput.value };
-  const newCard = createCard(cardObj);
-  cardsContainer.prepend(newCard);
+  const newCard = new Card({ name: cardNameInput.value, link: cardLinkInput.value }, selectors);
+  const cardElement = newCard.generate();
+  cardsContainer.prepend(cardElement);
   closePopup(popupCard);
   popupCardFormElement.reset();
-}
-
-function createCard(cardObj) {
-  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  const cardPicture = cardElement.querySelector('.element__picture');
-  cardElement.querySelector('.element__title').textContent = cardObj.name;
-  cardPicture.src = cardObj.link;
-  cardPicture.alt = cardObj.name;
-  cardPicture.addEventListener('click', function () {
-    popupLightboxPicture.src = cardObj.link;
-    popupLightboxPicture.alt = cardObj.name;
-    popupLightboxDescription.textContent = cardObj.name;
-    openPopup(popupLightbox);
-  });
-  cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like_active');
-  });
-  cardElement.querySelector('.element__trash').addEventListener('click', function () {
-    const listItem = cardElement.closest('.element');
-    listItem.remove();
-  });
-  return cardElement;
 }
 
 function setProfileInputsValues() {
@@ -95,8 +101,10 @@ function setProfileInputsValues() {
   jobInput.value = profileAbout.textContent;
 }
 
-initialCards.forEach((card) => {
-  cardsContainer.append(createCard(card));
+initialCards.forEach((cardObj) => {
+  const newCard = new Card(cardObj, selectors);
+  const cardElement = newCard.generate();
+  cardsContainer.append(cardElement);
 });
 
 closeButtons.forEach((button) => {
