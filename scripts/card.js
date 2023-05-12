@@ -1,4 +1,7 @@
 import { openPopup } from './index.js';
+import { popupLightbox } from './index.js';
+import { popupLightboxPicture } from './index.js';
+import { popupLightboxDescription } from './index.js';
 
 export class Card {
   constructor(data, selectors) {
@@ -9,15 +12,14 @@ export class Card {
   _getElement() {
     const cardTemplate = document.querySelector(this._selectors.cardTemplate).content;
     this.cardElement = cardTemplate.querySelector(this._selectors.singleCard).cloneNode(true);
-    this.cardPicture = this.cardElement.querySelector(this._selectors.cardPicture);
   }
 
   _setListeners() {
     this.cardPicture.addEventListener('click', () => {
-      this._selectors.popupLightboxPicture.src = this._card.link;
-      this._selectors.popupLightboxPicture.alt = this._card.name;
-      this._selectors.popupLightboxDescription.textContent = this._card.name;
-      openPopup(this._selectors.popupLightbox);
+      popupLightboxPicture.src = this._card.link;
+      popupLightboxPicture.alt = this._card.name;
+      popupLightboxDescription.textContent = this._card.name;
+      openPopup(popupLightbox);
     });
 
     this.cardElement.querySelector('.element__like').addEventListener('click', (evt) => {
@@ -25,13 +27,13 @@ export class Card {
     });
 
     this.cardElement.querySelector('.element__trash').addEventListener('click', () => {
-      const listItem = this.cardElement.closest(this._selectors.singleCard);
-      listItem.remove();
+      this.cardElement.remove();
     });
   }
 
   generate() {
     this._getElement();
+    this.cardPicture = this.cardElement.querySelector(this._selectors.cardPicture);
     this._setListeners();
     this.cardElement.querySelector('.element__title').textContent = this._card.name;
     this.cardPicture.src = this._card.link;
