@@ -2,7 +2,7 @@ export class FormValidator {
   constructor(form, config) {
     this._config = config;
     this._form = form;
-    this.inputList = Array.from(
+    this._inputList = Array.from(
       form.querySelectorAll(config.inputSelector)
     );
   }
@@ -13,7 +13,7 @@ export class FormValidator {
     this._form.addEventListener('reset', () => {
       this._disableButton(buttonElement)
     });
-    this.inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
         this._toggleButtonState(buttonElement);
@@ -56,7 +56,7 @@ export class FormValidator {
   }
 
   _hasInvalidInput() {
-    return this.inputList.some((inputElement) => {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
