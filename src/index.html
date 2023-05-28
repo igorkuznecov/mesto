@@ -3,16 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Место</title>
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="лого" />
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="лого" />
     </header>
     <main>
       <section class="profile">
-        <img src="./images/image.jpg" class="profile__avatar" alt="Аватар" />
+        <img src="<%=require('./images/image.jpg')%>" class="profile__avatar" alt="Аватар" />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button
@@ -40,7 +39,7 @@
           type="button"
           aria-label="Удалить"
         ></button>
-        <img src="./images/cat.jpg" class="element__picture" alt="Кот" />
+        <img src="" class="element__picture" alt="" />
         <h2 class="element__title"></h2>
         <button class="element__like" type="button" aria-label="Лайк"></button>
       </article>
@@ -128,11 +127,10 @@
           aria-label="Закрыть"
           class="popup__close-button"
         ></button>
-        <img class="popup__lightbox-image" src="./images/cat.jpg" alt="Кот" />
+        <img class="popup__lightbox-image" src="" alt="" />
         <p class="popup__image-description"></p>
       </div>
     </section>
-    <script src="./scripts/initialCards.js"></script>
     <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

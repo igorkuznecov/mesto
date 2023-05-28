@@ -14,6 +14,5 @@ export class UserInfo {
   setUserInfo(name, job) {
     this._name.textContent = name;
     this._job.textContent = job;
-    console.log(name, job)
   }
 }

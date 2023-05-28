@@ -4,6 +4,9 @@ import { PopupWithImage }  from './PopupWithImage.js';
 import { PopupWithForm }  from './PopupWithForm.js';
 import { UserInfo }  from './UserInfo.js';
 import { Section }  from './Section.js';
+import { initialCards }  from './initialCards.js';
+import '../pages/index.css';
+
 
 const selectors = {
   cardTemplate:'#card-template',
