@@ -15,7 +15,6 @@ export class Card {
     this.cardElement.querySelector('.element__like').addEventListener('click', (evt) => {
       evt.target.classList.toggle('element__like_active');
     });
-
     this.cardElement.querySelector('.element__trash').addEventListener('click', () => {
       this.cardElement.remove();
     });
