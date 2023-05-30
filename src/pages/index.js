@@ -52,13 +52,7 @@ function handleCardClick(link, description) {
   popupLightbox.open(link, description);
 }
 
-const popupAddCard = new PopupWithForm(selectors.popupCard, (data) => {
-  data['name'] = data['input-card-name'];
-  data['link'] = data['input-card-link'];
-  delete data['input-card-name'];
-  delete data['input-card-link'];
-  renderCard(data);
-});
+
 
 function createCard(cardData) {
   const newCard = new Card(cardData, selectors, handleCardClick);
@@ -74,6 +68,15 @@ function renderCard(cardData) {
 const section = new Section({items: [], renderer: renderCard}, selectors.cardSection)
 section.renderItems()
 
+const popupAddCard = new PopupWithForm(selectors.popupCard, (data) => {
+  data['name'] = data['input-card-name'];
+  data['link'] = data['input-card-link'];
+  delete data['input-card-name'];
+  delete data['input-card-link'];
+  renderCard(data);
+  popupAddCard.close();
+});
+
 popupAddCard.setEventListeners();
 
 buttonAddCard.addEventListener('click', () => {
@@ -88,6 +91,7 @@ const userInfo = new UserInfo(selectors);
 
 const popupEditProfile = new PopupWithForm(selectors.popupProfile, (data) => {
   userInfo.setUserInfo(data['profile-edit-form-name'], data['profile-edit-form-job']);
+  popupEditProfile.close();
 } );
 
 popupEditProfile.setEventListeners();
