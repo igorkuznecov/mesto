@@ -8,7 +8,6 @@ export class PopupWithImage extends Popup {
   }
 
   open(link, description) {
-    super.setEventListeners();
     this._image.src = link;
     this._image.alt = description;
     this._description.textContent = description;

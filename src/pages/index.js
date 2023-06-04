@@ -7,7 +7,6 @@ import { Section }  from '../components/Section.js';
 import { initialCards }  from '../utils/initialCards.js';
 import '../pages/index.css';
 
-
 const selectors = {
   cardTemplate:'#card-template',
   cardPicture:'.element__picture',
@@ -47,12 +46,11 @@ profileFormForValidation.enableValidation();
 cardFormForValidation.enableValidation();
 
 const popupLightbox = new PopupWithImage(selectors.popupLightbox);
+popupLightbox.setEventListeners()
 
 function handleCardClick(link, description) {
   popupLightbox.open(link, description);
 }
-
-
 
 function createCard(cardData) {
   const newCard = new Card(cardData, selectors, handleCardClick);
