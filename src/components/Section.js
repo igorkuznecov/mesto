@@ -4,8 +4,12 @@ export class Section {
     this._container = document.querySelector(selector);
     this._renderer = renderer;
   }
-  addItem(element) {
-    this._container.prepend(element);
+  addItem(element, append) {
+    if (append) {
+      this._container.append(element);
+    } else {
+      this._container.prepend(element);
+    }
   }
 
   renderItems() {
