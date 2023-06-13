@@ -13,23 +13,6 @@ export class Card {
     this.cardElement = cardTemplate.querySelector(this._selectors.singleCard).cloneNode(true);
   }
 
-  _handleDelete() {
-    this._handleDeleteIconClick(this.cardElement, this._card._id);
-  }
-
-  _handleLike() {
-    this._handleLikeClick(this._card._id, this._likeCount, this._like)
-    this._like.classList.toggle('element__like_active');
-  }
-
-  _checkUserLikes() {
-    if (this._card.likes.some((item) => item._id === this._profile._id)) {
-      this._like.classList.add('element__like_active');
-    } else {
-      this._like.classList.remove('element__like_active');
-    }
-  }
-
   _checkDeleteAccess() {
     if (this._card.owner._id != this._profile._id) {
       this._deleteIcon.remove();
@@ -38,13 +21,30 @@ export class Card {
 
   _setListeners() {
     this._cardPicture.addEventListener('click', () => { this._handleCardClick(this._card.link, this._card.name) });
-    this._like.addEventListener('click', () => { this._handleLike() });
-    this._deleteIcon.addEventListener('click', () => { this._handleDelete() });
+    this._like.addEventListener('click', () => { this._handleLikeClick(this) });
+    this._deleteIcon.addEventListener('click', () => { this._handleDeleteIconClick(this); });
   }
 
-  setLikeCount() {
-    this._likeCount = this.cardElement.querySelector('.element__likes-count');
+  _updateLikesView() {
     this._likeCount.textContent = this._card.likes.length;
+    this._like.classList.toggle(this._selectors.likeActive, this.isLiked());
+  }
+
+  deleteCard() {
+    this.cardElement.remove();
+  }
+
+  isLiked() {
+    return this._card.likes.some((like) => like._id === this._profile._id)
+  }
+
+  updateLikes(likes) {
+    this._card.likes = likes;
+    this._updateLikesView()
+  }
+
+  getId() {
+    return this._card._id;
   }
 
   generate() {
@@ -52,13 +52,13 @@ export class Card {
     this._cardPicture = this.cardElement.querySelector(this._selectors.cardPicture);
     this._deleteIcon = this.cardElement.querySelector('.element__trash');
     this._like = this.cardElement.querySelector('.element__like')
+    this._likeCount = this.cardElement.querySelector('.element__likes-count');
     this._checkDeleteAccess()
     this._setListeners();
-    this._checkUserLikes()
+    this._updateLikesView()
     this.cardElement.querySelector('.element__title').textContent = this._card.name;
     this._cardPicture.src = this._card.link;
     this._cardPicture.alt = this._card.name;
-    this.setLikeCount();
     return this.cardElement;
   }
 }

@@ -1,9 +1,9 @@
 export class Section {
-  constructor({ items, renderer }, selector) {
-    this._renderedItems = items;
+  constructor(renderer, selector) {
     this._container = document.querySelector(selector);
     this._renderer = renderer;
   }
+
   addItem(element, append) {
     if (append) {
       this._container.append(element);
@@ -12,9 +12,9 @@ export class Section {
     }
   }
 
-  renderItems() {
-    this._renderedItems.forEach((item) => {
-      this._renderer(item);
+  renderItems(items, isAppend) {
+    items.forEach((item) => {
+      this._renderer(item, isAppend);
     });
   }
 }
